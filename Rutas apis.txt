@@ -1,0 +1,167 @@
+1*Registro
+http://127.0.0.1:8000/api/register/{
+    "username": "ejemplo1",
+    "email": "testuser@example.com",
+    "password": "1234567",
+    "password2": "1234567"
+}
+
+
+2*Login
+http://127.0.0.1:8000/api/users/login/
+{
+    "username": "ejemplo1",
+    "password": "1234567"
+    
+}
+
+
+3*Listar usuarios
+http://127.0.0.1:8000/api/users/
+
+
+4*Actualizar usuario por id(PUT): (Se debe cambiar el password)
+http://127.0.0.1:8000/api/users/1/update/
+
+{
+    "username": "nuevo_nombre_usuario",
+    "email": "nuevo_email@example.com",
+    "password": "nueva_contraseña",
+    "password2": "nueva_contraseña"
+}
+
+5*Eliminar usuario
+http://localhost:8000/api/users/<id_del_usuario_a_eliminar>/delete/
+
+
+
+6*Listar todos los productos (GET)
+http://127.0.0.1:8000/api/products/
+
+
+7*Ver detalle de un solo producto por ID (GET)
+http://127.0.0.1:8000/api/products/1/
+
+
+8*Crear un nuevo producto (POST)
+http://127.0.0.1:8000/api/products/create/
+
+{
+    "titulo_producto": "Producto de ejemplo 2",
+    "precio_venta": 100.0,
+    "precio_con_descuento": 90.0,
+    "descripcion": "Descripción del producto",
+    "referencia": "P123",
+    "pais_origen": "Colombia",
+    "categoria": "RD"
+}
+
+9*Actualizar producto (PUT o PATCH)
+Si usas PATCH, solo envías los campos que quieres modificar.
+http://127.0.0.1:8000/api/products/1/update/
+
+{
+    "titulo_producto": "Producto actualizado",
+    "precio_venta": 120.0,
+    "precio_con_descuento": 100.0,
+    "descripcion": "Descripción actualizada",
+    "referencia": "P123-Actualizado",
+    "pais_origen": "México",
+    "categoria": "RM"
+}
+
+
+10*Eliminar producto (DELETE)
+http://127.0.0.1:8000/api/products/130/delete/
+
+
+
+11*Listar todos los productos de la lista de deseos (GET)
+http://127.0.0.1:8000/api/wishlist/
+
+
+
+12*Añadir producto a la lista de deseos (POST)
+http://127.0.0.1:8000/api/wishlist/add/
+
+{
+    "product_id": 129
+}
+
+13*Listar todos los productos de la lista de deseos (GET)
+http://127.0.0.1:8000/api/wishlist/
+
+
+14*Eliminar un producto de la lista de deseos (DELETE)
+http://127.0.0.1:8000/api/wishlist/remove/
+
+
+15* Añadir un producto al carrito (POST)
+http://127.0.0.1:8000/api/cart/add/
+
+{
+    "user_id": 29,
+    "product_id": 128,
+    "cantidad": 2
+}
+
+
+16*Listar todos los productos en el carrito (GET)
+(HACER ESTO ANTES DE MODIFICAR Y ELIMINAR PARA PODER VER LOS IDS)
+http://127.0.0.1:8000/api/cart/
+
+
+
+17**Actualizar la cantidad de un producto en el carrito (PUT)
+http://127.0.0.1:8000/api/cart/1/update/
+
+{
+    "cantidad": 3
+}
+
+
+18*Eliminar un producto del carrito (DELETE)
+http://127.0.0.1:8000/api/cart/1/delete/
+
+
+19*Listar todas las órdenes (GET)
+http://127.0.0.1:8000/api/orders/
+
+
+20*Ver detalle de una orden (GET)(Buscar el id de la orden en pedidos realizados)
+http://127.0.0.1:8000/api/orders/59/
+
+
+21*Actualizar una orden (PUT o PATCH) - Solo el estado del pedido y el producto.
+http://127.0.0.1:8000/api/orders/1/update/
+
+{
+  "user": 30,
+  "estado": "Enviado",
+  "customer": 1,
+  "product": 113
+}
+
+
+22*Eliminar una orden (DELETE) (Buscar el id de la orden en pedidos realizados)
+http://127.0.0.1:8000/api/orders/58/delete/
+
+
+23*Ver detalle de un solo pago por ID (GET)
+http://127.0.0.1:8000/api/payments/445/
+
+
+*24Actualizar pago (PUT o PATCH)
+http://127.0.0.1:8000/api/payments/444/update/
+
+{
+  "user": 31,
+  "amount": 150.0,
+  "razorpay_order_id": "order_QPNDywyiGcUfn1",
+  "razorpay_payment_status": "failed",
+  "razorpay_payment_id": "pay_QPNECq71XpzdgF",
+  "paid": false
+}
+
+*25Eliminar un pago (DELETE) - Buscar el id del pago en el admin
+http://127.0.0.1:8000/api/payments/444/delete/

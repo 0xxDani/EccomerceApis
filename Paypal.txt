@@ -1,0 +1,10 @@
+Ingresar a pay pay developer
+Crear una cuenta sandbox
+ubicar el correo de prueba en el archivo settings.py para poder enlazarlo
+sb-hwlt339044186@personal.example.com
+12345Dani..-
+
+
+# Configuración de PayPal
+PAYPAL_TEST = True  # Usamos el entorno de pruebas de PayPal
+PAYPAL_RECEIVER_EMAIL = 'sb-0plnt29007470@business.example.com'  # Correo electrónico del receptor de pagos de PayPal

@@ -1,0 +1,6 @@
+Correo razorpay
+0xsnake55@gmail.com
+
+# Configuración de Razorpay
+RAZOR_KEY_ID = 'rzp_test_V3NdXPh72wKeN8'  # Clave pública de Razorpay
+RAZOR_KEY_SECRET = 'VBaWeeL4qat7tGO9Dg6Wk9PF'  # Clave secreta de Razorpay
