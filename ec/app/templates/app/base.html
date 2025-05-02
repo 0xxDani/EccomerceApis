@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %} <!-- Carga de archivos estáticos en Django -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres para el documento -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura una correcta visualización en dispositivos móviles -->
+    
+    <!-- Carga de las hojas de estilo de Bootstrap desde un CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Carga de la hoja de estilo de Select2 (para seleccionar opciones avanzadas) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Carga de los iconos de FontAwesome desde un CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iK9tGR8r+ZNKa2DE5qFdiU/6MWPIFsqnFqD62jcjDISqFP+JJoCI9zjQ" crossorigin="anonymous">
+
+    <!-- Carga de archivos CSS estáticos específicos del proyecto -->
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'src/bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/styles.css' %}">
+
+    <!-- Carga del script de Razorpay para procesamiento de pagos -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <!-- Título dinámico del documento, que puede ser sobrescrito en las plantillas -->
+    <title>{% block title %} {% endblock title%}</title>
+</head>
+<body class="dark"> <!-- Clase 'dark' aplicada al cuerpo para modo oscuro -->
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id='navbar'>
+        <div class="container-fluid">
+            <!-- Logo del sitio -->
+            <a href="/">
+                <img src="{% static 'assets/images/icons/logolili.png' %}" width='60' height='50'>
+            </a>
+            <!-- Botón para colapsar la barra de navegación en dispositivos pequeños -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Menú de navegación colapsable -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Enlaces de navegación para páginas estáticas -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 pc-only">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'about' %}">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'contact' %}">Contáctanos</a>
+                    </li>
+                </ul>
+
+                <!-- Menú desplegable para categorías -->
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- Enlaces de categorías dinámicos con URLs de Django -->
+                            <li><a class="dropdown-item" href="{% url 'category' 'RD' %}">Ropa Dama</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'ME' %}">Maquillaje</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'CD' %}">Calzado Dama</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'PD' %}">Perfumería Dama</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'AD' %}">Accesorios Dama</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'PH' %}">Productos para el hogar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'BS' %}">Bolsos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'ES' %}">Electrodomésticos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'JA' %}">Juguetería</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'AE' %}">Arte</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'PL' %}">Productos de aplicación corporal</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'NP' %}">Novedades y promociones</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'CS' %}">Chaquetas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'CC' %}">Calzado para caballero</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category' 'AC' %}">Accesorios Caballero</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Menú desplegable para el usuario autenticado -->
+                    <li class="nav-item dropdown mx-2">
+                        {% if request.user.is_authenticated %}
+                        <a class="nav-link dropdown-toggle active" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{user|upper}}</a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <!-- Enlaces a las páginas del perfil de usuario -->
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Perfil</a></li>
+                            <li><a class="dropdown-item" href="{% url 'orders' %}">Ordenes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Cambiar contraseña</a></li>
+                            <li>
+                                <a href="{% url 'showwishlist' %}" class="dropdown-item">
+                                    Lista de favoritos
+                                    <span class="badge bg-danger">{% if wishitem > 0 %} {{wishitem}} {% endif %}</span>
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <!-- Icono del carrito de compras con el número de items -->
+                    <li class="nav-item">
+                        <a href="{% url 'showcart' %}" class="nav-link active">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger">{% if totalitem > 0 %}{{totalitem}}{% endif %}</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Formulario de búsqueda de productos -->
+                <form class="d-flex" role="search" action="/search">
+                    <input class="form-control-1 me-2" type="search" placeholder="Encuentra tu producto" name="search" aria-label="Search">
+                    <button class="btn btn-outline-success active" type="submit">Buscar</button>
+                </form>
+                {% else %}
+                <!-- Si el usuario no está autenticado, muestra opciones de login y registro -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'login' %}" class="nav-link text-white">Iniciar sesion</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registrarse</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bloques de contenido dinámico -->
+    {% block information %} {% endblock %}
+    {% block banner_slider %} {% endblock banner_slider %}
+    {% block main-content %} {% endblock main-content %}
+    {% block new_arrivals %} {% endblock new_arrivals %}
+    {% block comments %} {% endblock comments %}
+    {% block banner_slider_dos %} {% endblock banner_slider_dos %}
+    {% block payment-gateway %} {% endblock payment-gateway %}
+
+    <!-- Scripts de Bootstrap y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static 'src/bundle.js' %}"></script>
+    
+    <!-- Footer con enlaces a redes sociales -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100060375376089" class="icon" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/_astralshopp/" class="icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=573017753925" class="icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            {% comment %} <a href="#" class="icon"><i class="fab fa-twitter"></i></a> {% endcomment %}
+        </div>
+    </footer>
+</body>
+</html>

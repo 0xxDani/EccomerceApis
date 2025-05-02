@@ -1,0 +1,77 @@
+{% extends 'app/base.html' %} <!-- Extiende la plantilla base para usar su estructura general -->
+{% load static %} <!-- Carga archivos estáticos (CSS, JS, imágenes) -->
+{% block title %}Ordenes | Lili Fashion{% endblock title %} <!-- Define el título de la página -->
+
+{% block main-content %}
+<!-- Sección principal que contiene las órdenes del usuario -->
+<div class="container my-5">
+    <div class="banner-izquierdo">
+        <br>
+        <!-- Saludo al usuario, mostrando su nombre (capturado desde el request) -->
+        <h3>Hola <span class="text-capitalize">{{request.user}}</span>, aquí puedes ver el estado de tus órdenes</h3>
+        <br>
+        <!-- Sección de contenido donde se muestran las órdenes del usuario -->
+        <div class="col-sm-9 offset-sm-1">
+            {% for op in order_placed %} <!-- Itera sobre todas las órdenes que el usuario ha realizado -->
+            <div class="div-ordenes-uno">
+                <div class="orden-imagen">
+                    <!-- Muestra la imagen del producto de la orden con un tamaño específico -->
+                    <img src="{{op.product.imagen_producto.url}}" class="img-fluid" height="100" width="100">
+                </div>
+                <div class="orden-detalles">
+                    <div class="detalle">
+                        <!-- Muestra el nombre del producto -->
+                        <h6>Producto: </h6>
+                        <p>{{op.product.titulo_producto}}</p>
+                    </div>
+                    <div class="detalle">
+                        <!-- Muestra la cantidad de productos ordenados -->
+                        <h6>Cantidad : </h6>
+                        <p>{{op.cantidad}}</p>
+                    </div>
+                    <div class="detalle">
+                        <!-- Muestra el precio total de la orden -->
+                        <h6>Precio : </h6>
+                        <p>{{op.total_cost}}</p>
+                    </div>
+                    <div class="orden-estado">
+                        <!-- Muestra el estado actual de la orden -->
+                        <p>Estado de orden : {{op.status}}</p>
+                        
+                        <!-- Sección con barras de progreso para mostrar el avance del pedido basado en su estado -->
+                        {% if op.status == 'Aceptado' %} <!-- Si el estado es 'Aceptado' -->
+                        <div class="progress">
+                            <!-- Barra de progreso con 20% de avance -->
+                            <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        {% elif op.status == 'Empacado' %} <!-- Si el estado es 'Empacado' -->
+                        <div class="progress">
+                            <!-- Barra de progreso con 40% de avance -->
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        {% elif op.status == 'En camino' %} <!-- Si el estado es 'En camino' -->
+                        <div class="progress">
+                            <!-- Barra de progreso con 70% de avance -->
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        {% elif op.status == 'Entregado' %} <!-- Si el estado es 'Entregado' -->
+                        <div class="progress">
+                            <!-- Barra de progreso con 100% de avance -->
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        {% elif op.status == 'Cancelado' %} <!-- Si el estado es 'Cancelado' -->
+                        <div class="progress">
+                            <!-- Barra de progreso con 100% de avance (color rojo para indicar cancelación) -->
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %} <!-- Fin del ciclo de órdenes -->
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

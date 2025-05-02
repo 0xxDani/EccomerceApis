@@ -1,0 +1,71 @@
+//ESTILOS CATEGORIAS DE LA PÁGINA DE INICIO (HOME)
+hr.custom-hr {
+    width: 76%;
+    margin: 0 auto;
+    height: 2px;
+    background-color: var(--color-negro);
+}
+
+
+.custom-container h2 {
+    font-family: var(--font-family-82);
+    font-size: var(--font-size-title);
+    color: var(--color-negro);
+    text-align: center;
+    margin-top: 6rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.custom-row {
+    display: flex;
+    justify-content: space-between;
+    margin: auto; 
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.custom-col {
+    flex: 0 0 calc(34% - 20px); 
+}
+.custom-category {
+    border-radius: var(--border-radius);
+    padding: 10px;
+    text-align: center;
+    background-color: var(--color-negro); 
+    transition: transform 0.3s ease-in-out;  
+}
+.custom-category a{
+   text-decoration: none; 
+}
+.custom-category:hover {
+    transform: scale(1.05);                   /* ⬅️El efecto de escala al pasar el mickey mouse */
+}
+.custom-category-content{
+    height: 240px;
+}
+.custom-category-content img {
+    height: 220px;
+    width: 365px;
+    border-radius: var(--border-radius);
+}
+.mlkpro {
+    padding: 1px;
+    color: var(--color-white);
+    font-family: var(--font-family-1);
+    font-size: var(--font-size-1);
+    letter-spacing: 2px;
+}
+
+
+@media (max-width: 767px) {
+    .custom-row {
+        flex-direction: column;  
+    }
+    .custom-col {
+        flex: 0 0 100%; 
+        margin-bottom: 20px; 
+    }
+    .custom-category-content img {
+        width: 100%;
+    }
+}

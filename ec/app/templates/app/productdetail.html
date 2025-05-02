@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %} <!-- Extiende la plantilla base para reutilizar la estructura común del sitio -->
+{% load static %} <!-- Carga archivos estáticos como CSS, imágenes o scripts necesarios para la página -->
+
+{% block title %}Detalle de producto | Lili Fashion{% endblock title %} <!-- Establece el título de la página -->
+
+{% block main-content %}
+<!-- Sección principal de contenido de la página -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Columna que contiene la imagen del producto -->
+        <div class="col-lg-4 mt-5">
+            <img src="{{product.imagen_producto.url}}" class="img-fluid" alt="{{product.titulo_producto}}">
+            <!-- Muestra la imagen del producto con clases de diseño responsivo -->
+        </div>
+        
+        <!-- Columna que contiene la descripción y detalles del producto -->
+        <div class="col-lg-7 mt-5">
+            <div class="product-details-2">
+                <!-- Título del producto -->
+                <h2 class="descripcion-producto">{{product.titulo_producto}}</h2>
+                
+                <!-- Precio con descuento del producto -->
+                <h5 class="precio-sin-descuento">$. {{product.precio_con_descuento}}/-</h5>
+                
+                <!-- Precio original del producto tachado -->
+                <small class="text-decoration-line-through text-muted fs-5">
+                    <del id="precio-con-descuento">$. {{product.precio_venta}}/-</del>
+                </small>
+                <br><br>
+                
+                <!-- Título de las características del producto -->
+                <h4 class="caracteristicas-producto">Características del producto</h4>
+                
+                <!-- Lista de características del producto -->
+                <ul class="fs-5" style="font-family: Rajdhani; list-style: none; padding-left: 0;">
+                    <li>{{product.descripcion}}</li>
+                    <li>Referencia: {{product.referencia}}</li>
+                    <li>País de origen: {{product.pais_origen}}</li>
+                </ul>
+            </div>
+            
+            <!-- Sección de acciones para el producto (añadir al carrito, agregar a la lista de deseos) -->
+            <div class="product-actions mt-4">
+                <div class="d-flex flex-wrap">
+                    <!-- Formulario para añadir el producto al carrito -->
+                    <form action="/add-to-cart" class="mb-2 mr-2">
+                        <input type="hidden" name="prod_id" value="{{product.id}}">
+                        <button type="submit" class="btn btn-primary shadow px-3 py-2">Añadir al carrito</button>
+                    </form>
+
+                    <!-- Verifica si el producto está en la lista de deseos -->
+                    {% if wishlist %}
+                        <!-- Si está en la lista de deseos, permite eliminarlo de la misma -->
+                        <a pid="{{product.id}}" class="minus-wishlist btn btn-danger shadow px-3 py-1">
+                            <i class="fas fa-heart fa-lg"></i> <!-- Ícono de corazón para indicar que está en la lista de deseos -->
+                        </a>
+                    {% else %}
+                        <!-- Si no está en la lista de deseos, permite agregarlo -->
+                        <a pid="{{product.id}}" class="plus-wishlist btn btn-success shadow px-3 py-1">
+                            <i class="fas fa-heart fa-lg"></i> <!-- Ícono de corazón vacío para indicar que no está en la lista de deseos -->
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

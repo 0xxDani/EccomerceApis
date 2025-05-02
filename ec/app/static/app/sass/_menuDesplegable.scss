@@ -1,0 +1,12 @@
+.dropdown-menu{
+    background-color: var(--color-morado-oscuro);   
+}
+
+.dropdown-item{
+    color: var(--color-white);
+    font-family: var(--font-family-4);
+    font-size: var(--font-size);
+}
+.dropdown-item:hover {
+    background-color: var(--hover-color);
+}

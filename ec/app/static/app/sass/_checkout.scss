@@ -1,0 +1,38 @@
+#rzp-button1-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#rzp-button1 {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.razorpay-icon {
+    width: 6em;
+    height: 4em;
+}
+
+#paypal-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#paypal-container img {
+    margin-bottom: 5px;
+    max-width: 80px;
+    max-height: 60px;
+}
+@media (max-width: 767px) {
+    #rzp-button1 {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #paypal-container {
+        margin-top: 10px;
+    }
+}

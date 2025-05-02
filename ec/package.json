@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "ec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --watch --config rollup.config.js",
+    "sass": "sass --watch --style=compressed app/static/app/sass/index.scss:app/static/src/bundle.css"
+    
+    
+  },
+  "keywords": [],
+  "author": "Daniel Bustamante O",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^3.26.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}

@@ -1,0 +1,36 @@
+<!-- templates/tu_template.html -->
+{% extends 'app/base.html' %} <!-- Extiende la plantilla base para mantener una estructura común en toda la aplicación -->
+{% load static %} <!-- Carga archivos estáticos como CSS, imágenes o scripts necesarios para la página -->
+
+{% block title %}Resultados de búsqueda | Lili Fashion{% endblock title %} <!-- Establece el título de la página en la barra del navegador -->
+
+{% block main-content %}
+<!-- Contenido principal de la página -->
+<br>
+<div class="container my-5">
+    <div class="row" id="product-grid">
+        <!-- Itera sobre los productos pasados al template -->
+        {% for prod in product %}
+            <div class="product-item" id="fav-product-col">
+                <!-- Enlace al detalle del producto -->
+                <a href="{% url 'product-detail' prod.product.id %}" class="btn">
+                    <div class="product-content">
+                        <!-- Imagen del producto -->
+                        <img src="{{prod.product.imagen_producto.url}}" alt="{{prod.product.titulo_producto}}">
+                    </div>
+                    <div class="product-details">
+                        <!-- Título del producto -->
+                        <div>{{prod.product.titulo_producto}}</div>
+                        <div class="fw-bold text-danger">
+                            <!-- Precio con descuento -->
+                            $.{{prod.product.precio_con_descuento}}/-
+                            <!-- Precio original tachado -->
+                            <small class="fw-light text-decoration-line-through">{{prod.product.precio_venta}}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main-content %}

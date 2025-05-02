@@ -1,0 +1,23 @@
+.titulo-carrito{
+    font-family: var(--font-family-82);
+    font-size: var(--font-size-9);
+    color: var(--color-morado-oscuro);
+    margin-bottom: 50px;
+}
+.remove-cart{
+    background-color: var(--color-verde-militar-2);
+    border: none;
+    border-radius: var(--border-radius-3);
+    text-align: center;
+}
+#btn-pagar{
+    background-color: var(--color-azul-3);
+    border: none;
+}
+#items-pago{
+    margin-left: 7px;
+}
+#texto-carrito-vacio{
+    font-family: var(--font-family-82);
+    font-size: var(--font-size-8);
+}

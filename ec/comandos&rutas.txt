@@ -1,0 +1,174 @@
+**********************************************************************************************************************
+RUTA A DOCUMENTACION DE RAZORPAY
+
+https://razorpay.com/docs/payments/server-integration/python/payment-gateway/build-integration/
+
+
+**********************************************************************************************************************
+COMANDO PARA EJECUTAR SASS Y COMPILAR NUEVOS ESTILOS
+
+sass app/static/app/sass/index.scss app/static/src/bundle.css
+
+**********************************************************************************************************************
+INSTALAR LIBRERÍAS DEL PROYECTO
+
+pip install -r requirements.txt
+
+**********************************************************************************************************************
+ACTIVAR SERVIDOR
+
+python manage.py runserver
+
+**********************************************************************************************************************
+
+success@razorpay
+
+**********************************************************************************************************************
+
+failure@razorpay
+
+
+**********************************************************************************************************************
+DOCUMENTACION PAGOS
+https://razorpay.com/docs/payments/payments/test-card-details/
+
+
+**********************************************************************************************************************
+
+Card Network	Card Number	CVV	Expiry Date
+Mastercard	5267 3181 8797 5449	Random CVV	Any future date
+
+
+**********************************************************************************************************************
+
+console.log(sessionStorage.getItem("themePreference"));
+
+
+**********************************************************************************************************************
+MIGRACIONES
+python manage.py makemigrations && python manage.py migrate
+
+
+**********************************************************************************************************************
+
+sass app/static/app/sass/index.scss app/static/src/bundle.css
+
+
+**********************************************************************************************************************
+
+
+
+
+**********************************************************************************************************************
+
+
+
+
+**********************************************************************************************************************
+
+1- INSTALAR VIRTUAL ENV EN EL EQUIPO
+  pip install virtualenv
+
+
+**********************************************************************************************************************
+
+2- CREAR ENTORNO VIRTUAL EJECUTANDO
+    virtualenv env
+
+
+**********************************************************************************************************************
+
+3- ACTIVAR ENTORNO VIRTUAL
+    env\Scripts\activate
+
+**********************************************************************************************************************
+
+4- INSTALAR DJANGO
+
+    pip install django
+
+
+**********************************************************************************************************************
+
+5- INICIAR PROYECTO DJANGO
+
+    django-admin startproject ec
+
+
+**********************************************************************************************************************
+
+6- INICIAR SERVIDOR
+
+
+**********************************************************************************************************************
+
+7- CREAR APLICACIÓN 
+    python manage.py createapp app
+
+    'Esto creará los archivos models.py, views.py etc... dentro de la carpeta de la app'
+
+**********************************************************************************************************************
+
+8. SE CREA UN NUEVO SERVICIO EN RENDER PARA DESPLEGAR. (SETTING.PY)
+
+-SE IMPORTA LA LIBREIA 'OS' Y SE CAMBIA LA KEY SECRET EN SETTINGS.PY
+-SE MODIFICAN LOS ERRORES DE LA VARIABLE DEBUG
+-SE CAMBIA LA BASE DE DATOS A POSTGRES
+
+-COMANDO PARA INSTALAR BASE DE DATOS QUE BRINDA RENDER
+- 👉     pip install dj-database-url
+
+-Se importa en el archivo settings.py: 
+          import dj_database_url
+-ESTE MODULO TAMBIEN SE INSTALA NO SE PARA QUE PERO DEBE ESTAR AHÍ (:
+- 👉      pip install psycopg2-binary
+
+SE INSTALA ESTE OTRO MODULO
+- 👉      pip install whitenoise[brotli]
+(SE AÑADE AL MIDDLEWARE)
+
+SE CREA EL ARCHIVO STATIC PARA ENVIAR TODOS LOS ESTATICOS
+python manage.py collectstatic 
+
+LUEGO SE CREA ARCHIVO build.sh
+
+SI LO SE...QUE CHICHARRÓN DESPLEGAR DJANGO...SIGAMOS
+
+LUEGO EN UN SPLIT TERMINAL, SE ABRE UN GIT BASH Y SE PEGA ESTE COMANDO
+(OJO OBVIO EN LA RAÍZ DEL PROYECTO DONDE ESTE EL ARCHIVO CARAJILLO)
+
+chmod a+x build.sh
+
+LUEGO SE INSTALA GUNICOR 
+
+pip install gunicorn
+
+
+comando para poner en el campo de Start command
+
+gunicorn proyecto-django.wsgi:application
+**********************************************************************************************************************
+
+
+
+**********************************************************************************************************************
+
+-DE AHI SE CREA LA PRIMERA VISTA EN VIEWS.PY DE ENSAYO
+-SE CREA LA CARPETA templates
+-SE CREA LA CARPETA app
+-SE CREA LA BASE.HTML
+-SE COPIA EL CONTENIDO DE URLS.PY DEL PROYECTO DJANGO Y SE PEGA EN EL URLS.PY DE 
+LA APLICACIÓN PARA EMPEZAR A CONFIGURAR LAS RUTAS CON LAS IMPORTACIONES  A VIEWS
+EN LA RUTA SE LLAMA A LA VISTA Y A LA FUNCION ..EJEMPLO..: views.home...en la linea: path('', views.home),
+
+-EN EL URLS.PY DEL PROYECTO DJANGO DE NIVEL SUPERIOR SE IMPORTA LA LIBRERÍA INCLUDE Y CON ELLA SE AÑADE
+AL PATH LA APLICACIÓN PRINCIPAL.
+
+-SE INICIA EL SERVIDOR PARA MIRAR SI FUNCIONA
+-SE CREA LA CARPETA STATIC Y DENTRO SE CREA LA CARPETA APP, ASSETS, SRC
+-DENTRO DE APP SE CREA LA CARPETA CSS, LA CARPETA SASS Y LA CARPETA JS
+
+
+
+
+

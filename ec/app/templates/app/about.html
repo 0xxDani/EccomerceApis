@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}  <!-- Extiende la plantilla base del proyecto para reutilizar el diseño y la estructura común de la página -->
+
+{% load static %}  <!-- Carga las etiquetas de archivo estático de Django, permitiendo usar imágenes, hojas de estilo, scripts, etc. -->
+
+{% block title %}Acerca de nosotros | Lili Fashion{% endblock title %}  
+<!-- Define el título de la página que aparecerá en la barra del navegador. En este caso, "Acerca de nosotros | Lili Fashion" -->
+
+{% block main-content %}  <!-- Define el bloque de contenido principal que se llenará con la información específica de la página -->
+
+    <div class="contenedor mt-5">  <!-- Contenedor principal con un margen superior (mt-5) -->
+        <div class="fila">  <!-- Define una fila dentro del contenedor para organización -->
+            <div class="col-md-8 offset-md-2 text-center">  <!-- Columna centrada con un ancho del 8 y un desplazamiento de 2 columnas -->
+                <h2 class="titulo-bienvenida">  <!-- Título de bienvenida en la página -->
+                    Bienvenido a Astral Shop
+                </h2>
+                <p class="texto-bienvenida fs-4">  <!-- Texto de bienvenida con una clase de fuente más grande (fs-4) -->
+                    Descubre nuestra historia y compromiso de ofrecerte productos de calidad.
+                </p>
+            </div>
+        </div>
+
+        <section class="my-5">  <!-- Sección con márgenes (my-5) -->
+            <div class="fila">
+                <div class="col-md-8 offset-md-2">  <!-- Columna centrada -->
+                    <h3 class="titulo-seccion">Nuestra Historia</h3>  <!-- Título de la subsección -->
+                    <p class="fs-5">  <!-- Descripción en tamaño de fuente 5 -->
+                        En el año 2023, Astral Shop nació con la visión de revolucionar la forma en que las personas compran productos en línea. Desde entonces, nos hemos dedicado a proporcionar a nuestros clientes una experiencia de compra única y conveniente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-5">  <!-- Otra sección con márgenes -->
+            <div class="fila">
+                <div class="col-md-8 offset-md-2">  <!-- Columna centrada -->
+                    <h3 class="titulo-seccion">Misión y Visión</h3>  <!-- Título de la subsección -->
+                    <p class="fs-5">  <!-- Descripción de la misión -->
+                        Nuestra misión es ofrecer productos de alta calidad a precios competitivos, brindando a nuestros clientes una experiencia de compra inigualable...
+                    </p>
+                    <p class="fs-5">  <!-- Descripción de la visión -->
+                        La visión de Astral Shop es crear un espacio en línea donde la diversidad de productos se encuentre con la comodidad de comprar desde la comodidad de su hogar...
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock main-content %}  <!-- Fin del bloque de contenido principal -->
+
+{% block banner_slider_dos %}  <!-- Bloque para el slider de banners -->
+<br>
+<div id="carrusel-inicio" class="carrusel-inicio-2">  <!-- Carrusel de imágenes que funciona como banner en la página -->
+    <div class="diapositivas-2">  <!-- Contenedor de las diapositivas -->
+        <div class="diapositiva-2">  <!-- Cada diapositiva dentro del carrusel -->
+            <img src="{% static 'assets/images/banner/fondo1.jpg'%}" alt="banner1">  <!-- Imagen del banner, cargada con la etiqueta 'static' de Django -->
+        </div>
+        <!-- Repetición de diapositivas con diferentes imágenes para el carrusel -->
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo2.jpg'%}" alt="banner2">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo3.jpg'%}" alt="banner3">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo4.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo5.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo6.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo7.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo8.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo9.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo10.jpg'%}" alt="banner4">
+        </div>
+    </div>
+</div>
+<br>
+{% endblock banner_slider_dos %}  <!-- Fin del bloque de slider de banners -->

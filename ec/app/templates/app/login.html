@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Inicio de sesion | Lili Fashion{% endblock title %}
+
+{% block main-content %}
+<!-- Contenedor principal para la página de inicio de sesión -->
+<div class="container">
+    <div class="row my-3">
+        <!-- Columna centrada para el formulario de inicio de sesión -->
+        <div class="col-sm-6 offset-sm-3" id="login">
+            <br><br>
+            <!-- Título de la página de inicio de sesión -->
+            <h3>Inicia sesión en Astral Shop</h3>
+            <hr>
+            <br>
+            <!-- Formulario de inicio de sesión -->
+            <form action="" method="post" novalidate class="shadow p-5" id="shadow-1">
+                <!-- Token CSRF para seguridad en el formulario -->
+                {% csrf_token %}
+                
+                <!-- Bucle para mostrar los campos del formulario, incluyendo sus etiquetas y errores -->
+                {% for fm in form %}
+                    <!-- Muestra la etiqueta y el campo del formulario -->
+                    {{fm.label_tag}} {{fm}} 
+                    <!-- Muestra los errores del campo si los hay -->
+                    <small class="text-danger">
+                        {{fm.errors|striptags}} 
+                    </small><br>
+                {% endfor %}
+                
+                <!-- Comentarios sobre elementos pendientes -->
+                {% comment %} 
+                    PENDIENTE POR AÑADIR CORREO ELECTRÓNICO AL LOGIN PARA PODER HACER ESTO
+                {% endcomment %}
+                {% comment %}
+                    <small class="small-link"><a href="{% url 'password_reset' %}">Olvidó su contraseña ?</a></small>
+                {% endcomment %}
+                
+                <br>
+                <!-- Botón de envío para iniciar sesión -->
+                <input type="submit" class="btn btn-primary mt-4" value="Iniciar sesión">
+                
+                <br><br><br><br>
+                <!-- Enlace para los nuevos usuarios para registrarse -->
+                <div class="text-center text-primary fw-bold">
+                    <small id="texto-login-abajo">Nuevo usuario? <a href="{% url 'customerregistration' %}" class="text-danger">Crear una cuenta</a></small>
+                </div>
+                
+                <!-- Mostrar errores de formulario no específicos si existen -->
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </form>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

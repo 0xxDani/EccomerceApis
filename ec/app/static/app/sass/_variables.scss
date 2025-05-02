@@ -1,0 +1,202 @@
+//LIBRERÍAS PARA LAS FUENTES
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Pacifico&family=Amatic+SC&family=Sacramento&family=Shadows+Into+Light&family=Quicksand&family=Kaushan+Script&family=Caveat&family=Cormorant+Garamond&family=Indie+Flower&family=Patrick+Hand&family=Yellowtail&family=Alegreya&family=Dosis&family=Josefin+Sans&family=Montserrat&family=Playfair+Display&family=Raleway&family=Roboto&family=Open+Sans&family=Ubuntu&family=Merriweather&family=Noto+Serif&family=Oswald&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Nunito:wght@200;300;400;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@100;200;300;400;500;600;700;800;900&family=Orbitron:wght@400;500;700&family=Audiowide&family=Cinzel:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Baloo:wght@300;400;500;600;700&family=Righteous&family=Racing+Sans+One&family=Ultra&display=swap');
+
+
+//VARIABLES DE COLORES, FUESTES TAMAÑOS BORDES ETC.
+:root {
+    --bg-dark: hsl(98, 19%, 88%);
+    --bg-color: hsl(269, 72%, 13%);
+    --text-light: #ca1010;
+    --text-color: #0be703;
+
+    --hover-color: #007ACC;
+
+    --color-azul: hsl(249, 100%, 50%);
+    --color-azul-2: #3b5998;
+    --color-azul-3:  #007ACC;
+  
+    --color-azul-claro: hsl(214, 71%, 57%);
+    --color-azul-claro-2: hsl(214, 53%, 68%);
+    --color-azul-oscuro: #130831;
+    --color-azul-oscuro-2: #351d75;
+
+    --color-gris: hsl(0, 0%, 31%);
+    --color-gris-2: #333;
+    --color-gris-3: #9fa89e;
+    --color-gris-4: #4e4848;
+    --color-gris-5: #c2b6b6;
+    --color-gris-6: #a79a9a;
+
+    --color-negro: #000000;
+    --color-negro-2: #0f0e0e;
+    --color-negro-3: #121212;
+    --color-negro-4: #1e1e1e;
+    --color-negro-5: #272727;
+
+    --sombra-negra: 0 0 30px rgba(0, 0, 0, 0.5);
+
+    --color-white: hsl(0, 0%, 100%);
+
+    --color-verde: hsl(113, 83%, 39%);
+    --color-verde-2: #4caf50;
+    --color-verde-neon: #00ff08;
+    --color-verde-claro: hsl(113, 47%, 57%);
+    --color-verde-claro-2: hsl(113, 14%, 55%);
+    --color-verde-militar: hsl(112, 66%, 18%);
+    --color-verde-militar-2: hsl(114, 74%, 8%);
+
+    --color-rojo: hsl(0, 100%, 47%);
+    --color-rojo-2: #bb2323;
+    --color-vino: #800020; 
+    --color-rosado: hsl(308, 72%, 65%);
+    --color-fucsia: #920433;
+
+    --color-amarillo: hsl(66, 100%, 50%);
+    --color-amarillo-2: #FFD700;
+    --color-amarillo-neon: hsl(66, 100%, 30%); 
+
+    --color-morado: #360b3b;
+    --color-morado-neon: #8a2be2;
+    --color-morado-neon-2: #4b0082; 
+    --color-morado-oscuro:#1c131d;
+    --color-morado-claro: #cd7dd4;
+
+    --border: 1px solid var(--color-verde-neon);
+    --border-2: 1px solid var(--color-morado-neon-2);
+
+    --border-radius: 1em;
+    --border-radius-2: 10px 0 0 10px;
+    --border-radius-3: .4em;
+    --border-radius-4: .3em;
+
+    --border-bottom: 1em;
+    --border-top: 1em;
+
+    --skills-bar-length: 0%;
+    --transition: color 0.1s, background-color 0.2s ease-in-out;
+    
+    --font-family-1: 'Lobster', cursive;
+    --font-family-2: 'Cinzel Decorative', cursive;
+    --font-family-3: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --font-family-4: Cochin, Georgia, Times, 'Times New Roman', serif;
+    --font-family-5: 'Arial', sans-serif;
+    --font-family-6: 'Lobster';
+    --font-family-7: 'Great Vibes', cursive;
+    --font-family-8: 'Dancing Script', cursive;
+    --font-family-9: 'Pacifico', cursive;
+    --font-family-10: 'Amatic SC', cursive;
+    --font-family-11: 'Sacramento', cursive;
+    --font-family-12: 'Shadows Into Light', cursive;
+    --font-family-13: 'Quicksand', sans-serif;
+    --font-family-14: 'Kaushan Script', cursive;
+    --font-family-15: 'Caveat', cursive;
+    --font-family-16: 'Cormorant Garamond', serif;
+    --font-family-17: 'Indie Flower', cursive;
+    --font-family-18: 'Patrick Hand', cursive;
+    --font-family-19: 'Yellowtail', cursive;
+    --font-family-20: 'Alegreya', serif;
+    --font-family-21: 'Dosis', sans-serif;
+    --font-family-22: 'Josefin Sans', sans-serif;
+    --font-family-23: 'Montserrat', sans-serif;
+    --font-family-24: 'Playfair Display', serif;
+    --font-family-25: 'Raleway', sans-serif;
+    --font-family-26: 'Roboto', sans-serif;
+    --font-family-27: 'Open Sans', sans-serif;
+    --font-family-28: 'Ubuntu', sans-serif;
+    --font-family-29: 'Merriweather', serif;
+    --font-family-30: 'Noto Serif', serif;
+    --font-family-31: 'Oswald', sans-serif;
+    --font-family-32: 'Poppins', sans-serif;
+    --font-family-33: 'Bungee Shade', cursive;
+    --font-family-34: 'Crimson Pro', serif;
+    --font-family-35: 'Delius Swash Caps', cursive;
+    --font-family-36: 'Euphoria Script', cursive;
+    --font-family-37: 'Fascinate Inline', cursive;
+    --font-family-38: 'Grand Hotel', cursive;
+    --font-family-39: 'Kaushan Script', cursive;
+    --font-family-40: 'MedievalSharp', cursive;
+    --font-family-41: 'Poppins', sans-serif;
+    --font-family-42: 'Montserrat', sans-serif;
+    --font-family-43: 'Roboto', sans-serif;
+    --font-family-44: 'Nunito', sans-serif;
+    --font-family-45: 'Quicksand', sans-serif;
+    --font-family-46: 'Source Sans Pro', sans-serif;
+    --font-family-47: 'Exo 2', sans-serif;
+    --font-family-48: 'Maven Pro', sans-serif;
+    --font-family-49: 'Archivo', sans-serif;
+    --font-family-50: 'Barlow', sans-serif;
+    --font-family-51: 'Rubik', sans-serif;
+    --font-family-52: 'Arimo', sans-serif;
+    --font-family-53: 'Inter', sans-serif;
+    --font-family-54: 'Rajdhani', sans-serif;
+    --font-family-55: 'Work Sans', sans-serif;
+    --font-family-56: 'DM Sans', sans-serif;
+    --font-family-57: 'Prompt', sans-serif;
+    --font-family-58: 'Karla', sans-serif;
+    --font-family-59: 'Hind', sans-serif;
+    --font-family-60: 'Muli', sans-serif;
+    --font-family-61: 'Lato', sans-serif;
+    --font-family-62: 'Oswald', sans-serif;
+    --font-family-63: 'Jost', sans-serif;
+    --font-family-64: 'Noto Sans', sans-serif;
+    --font-family-65: 'Titillium Web', sans-serif;
+    --font-family-66: 'Yantramanav', sans-serif;
+    --font-family-67: 'Abel', sans-serif;
+    --font-family-68: 'Cabin', sans-serif;
+    --font-family-69: 'Dosis', sans-serif;
+    --font-family-70: 'Fira Sans', sans-serif;
+    --font-family-71: 'Monda', sans-serif;
+    --font-family-72: 'Overpass', sans-serif;
+    --font-family-73: 'Raleway', sans-serif;
+    --font-family-74: 'Spectral', serif;
+    --font-family-75: 'Nanum Gothic', sans-serif;
+    --font-family-76: 'Yrsa', serif;
+    --font-family-77: 'Mukta', sans-serif;
+    --font-family-78: 'Barlow Condensed', sans-serif;
+    --font-family-79: 'Asap', sans-serif;
+    --font-family-80: 'Alegreya Sans', sans-serif;
+    --font-family-81: 'Play', sans-serif;
+    --font-family-82: 'Orbitron', sans-serif;
+    --font-family-83: 'Audiowide', cursive;
+    --font-family-84: 'Cinzel', serif;
+    --font-family-85: 'Josefin Sans', sans-serif;
+    --font-family-86: 'Baloo', sans-serif;
+    --font-family-87: 'Righteous', cursive;
+    --font-family-88: 'Racing Sans One', cursive;
+    --font-family-89: 'Ultra', sans-serif;
+    --font-family-90: 'Lobster Two', cursive;
+    --font-family-91: 'Bungee', cursive;
+    --font-family-92: 'Bebas Neue', cursive;
+    --font-family-93: 'Ephesis', cursive;
+    --font-family-94: 'Gugi', cursive;
+    --font-family-95: 'Kosugi Maru', sans-serif;
+    --font-family-96: 'Padauk', sans-serif;
+    --font-family-97: 'Staatliches', cursive;
+    --font-family-98: 'Ceviche One', cursive;
+    --font-family-99: 'Chango', cursive;
+    --font-family-100: 'Fascinate', cursive;
+
+    --font-size: .9rem;
+    --font-size-1: 1rem; 
+    --font-size-2: 1.1rem;
+    --font-size-3: 1.2rem; 
+    --font-size-4: 1.3rem;
+    --font-size-5: 1.4rem; 
+    --font-size-6: 1.5rem;
+    --font-size-7: 1.6rem; 
+    --font-size-8: 1.7rem; 
+    --font-size-9: 1.8rem; 
+    --font-size-10: 1.9rem; 
+    --font-size-11: 2rem; 
+    --font-size-12: 2.1rem; 
+    --font-size-13: 2.2rem; 
+    --font-size-14: 2.3rem; 
+    --font-size-15: 2.4rem; 
+
+    --font-weight: bold;
+
+    --font-size-title: 1.8rem; 
+    --line-height: 1.5; 
+}

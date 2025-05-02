@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %} <!-- Extiende la plantilla base para reutilizar la estructura global de la página -->
+{% load static %} <!-- Carga archivos estáticos como CSS, imágenes o scripts necesarios para la página -->
+
+{% block title %}Resultados de búsqueda | Lili Fashion{% endblock title %} <!-- Establece el título de la página -->
+
+{% block main-content %}
+<!-- Contenido principal de la página -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Columna para mostrar los productos -->
+        <div class="col-sm-8">
+            <div class="row">
+                <!-- Bucle que recorre todos los productos encontrados en la búsqueda -->
+                {% for prod in product %}
+                    <div class="col-sm-4 text-center mb-4 hover-shadow">
+                        <!-- Enlace para ver los detalles del producto -->
+                        <a href="{% url 'product-detail' prod.id %}" class="btn">
+                            <div>
+                                <!-- Imagen del producto -->
+                                <img src="{{prod.imagen_producto.url}}" width="300px" height="200px">
+                                <!-- Título del producto -->
+                                <div class="fw-bold">{{prod.titulo_producto}}</div>
+                                <!-- Precio con descuento -->
+                                <div class="fw-bold text-danger">
+                                    $.{{prod.precio_con_descuento}}/-
+                                    <!-- Precio original tachado -->
+                                    <small class="fw-light text-decoration-line-through">{{prod.precio_venta}}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

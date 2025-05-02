@@ -1,0 +1,30 @@
+//COLOR DE TEXTO DEL HEADER Y ANCLAS Y DESPLEGABLES
+
+.navbar-nav .nav-link.dropdown-toggle {
+    font-family: var(--font-family-81);
+    font-weight: bold; 
+    font-size: 15px; 
+    letter-spacing: 0.5px; 
+    
+  }
+  .navbar-nav {
+    .nav-link {
+      &.active {
+        color: var(--color-white);
+        font-family: var(--font-family-81);
+        font-weight: bold;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+      }
+  
+      &:hover {
+        color: var(--color-azul-3);
+      }
+    }
+  }
+
+  .nav-item a{
+    font-family: var(--font-family-81);
+  }
+  
+  

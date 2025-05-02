@@ -1,0 +1,180 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Contacto | Lili Fashion{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <!-- Si hay mensajes, los muestra -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Título de la sección de contacto -->
+    <h2 class="text-center mb-4">Contáctanos</h2>
+
+    <div class="row">
+        <!-- Sección de información de contacto y redes sociales -->
+        <div class="col-lg-6 contact-section">
+            <div class="contact-info">
+                <!-- Icono de servicio al cliente -->
+                <img src="{% static 'assets/images/icons/customer-service-icon.png' %}" alt="Servicio al Cliente">
+                
+                <!-- Información de contacto -->
+                <p>Línea Nacional: 1-800-123-4567</p>
+                <p>Línea de WhatsApp: <a href="https://wa.me/1234567890">123-456-7890</a></p>
+            </div>
+        
+            <div class="social-icons-2">
+                <!-- Enlaces a redes sociales -->
+                <a href="#" class="social-icon-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/1234567890" class="social-icon-2"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="col-lg-6">
+            <form action="{% url 'contact' %}" method="post" class="contact-form">
+
+                <!-- Token CSRF para protección contra ataques -->
+                {% csrf_token %}
+
+                <!-- Campos del formulario de contacto -->
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombres:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">Apellidos:</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                </div>
+                <div class="mb-3">
+                    <label for="celular" class="form-label">Celular (con indicativo):</label>
+                    <div class="input-group">
+                        <select class="form-select" id="indicativo" name="indicativo" required>
+                            <option value="+57">+57</option>
+                        </select>
+                        <input type="tel" class="form-control" id="celular" name="celular" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="identificacion" class="form-label">Número de Identificación:</label>
+                    <input type="text" class="form-control" id="identificacion" name="identificacion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipo-caso" class="form-label">Tipo de Caso:</label>
+                    <select class="form-select" id="tipo-caso" name="tipo-caso" required>
+                        <!-- Opciones del tipo de caso -->
+                        <option value="servicios">Servicios</option>
+                        <option value="informacion">Información</option>
+                        <option value="felicitaciones">Felicitaciones</option>
+                        <option value="sugerencias">Sugerencias</option>
+                        <option value="quejas">Quejas</option>
+                        <option value="solicitudes">Solicitudes</option>
+                        <option value="envios">Envíos</option>
+                        <option value="devoluciones">Devoluciones</option>
+                        <option value="garantias">Garantías</option>
+                        <option value="producto-no-conforme">Producto No Conforme</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label">Asunto:</label>
+                    <input type="text" class="form-control" id="asunto" name="asunto" required>
+                </div>
+                <div class="mb-3">
+                    <label for="numero-factura" class="form-label">Número de Factura:</label>
+                    <input type="text" class="form-control" id="numero-factura" name="numero-factura">
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción del Mensaje:</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Script para manejar la acción del formulario con AJAX -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.querySelector('.contact-form');
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el comportamiento por defecto de envío del formulario
+            fetch('', {
+                method: 'POST', // Método POST para enviar los datos
+                body: new FormData(form), // Obtiene los datos del formulario
+                headers: {
+                    'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value // Token CSRF
+                }
+            })
+            .then(response => response.json())  // Procesa la respuesta JSON
+            .then(data => {
+                // Si el mensaje se envía correctamente, muestra un mensaje de éxito
+                var successMessage = document.createElement('div');
+                successMessage.className = 'alert alert-success';
+                successMessage.innerHTML = 'El mensaje se envió con éxito.';
+                document.querySelector('.container').prepend(successMessage);
+    
+                // Resetea el formulario después del envío
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error al enviar el formulario:', error); // Muestra cualquier error en la consola
+            });
+        });
+    });
+</script>
+
+{% endblock main-content %}
+
+<!-- Bloque para el carrusel de imágenes (Banner) -->
+{% block banner_slider_dos %}
+<br>
+<div id="carrusel-inicio" class="carrusel-inicio-2">
+    <div class="diapositivas-2">
+        <!-- Cada diapositiva dentro del carrusel -->
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo1.jpg'%}" alt="banner1">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo2.jpg'%}" alt="banner2">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo3.jpg'%}" alt="banner3">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo4.jpg'%}" alt="banner4">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo5.jpg'%}" alt="banner5">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo6.jpg'%}" alt="banner6">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo7.jpg'%}" alt="banner7">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo8.jpg'%}" alt="banner8">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo9.jpg'%}" alt="banner9">
+        </div>
+        <div class="diapositiva-2">
+            <img src="{% static 'assets/images/banner/fondo10.jpg'%}" alt="banner10">
+        </div>
+    </div>
+</div>
+<br>
+{% endblock banner_slider_dos %}

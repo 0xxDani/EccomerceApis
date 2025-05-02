@@ -1,0 +1,26 @@
+//ESTILOS DEL FOOTER
+.footer {
+    background-image: url("/static/assets/images/universo.jpg");
+    background-size: cover;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+}  
+.icon {
+    font-size: 24px;
+    color: #fff;
+    margin: 0 10px;
+}
+@media screen and (max-width: 600px) {
+    .social-icons {
+        flex-direction: row;
+    }
+    .icon {
+        margin: 10px 5;
+    }
+}

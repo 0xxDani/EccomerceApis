@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %} <!-- Hereda la plantilla base -->
+
+{% load static %} <!-- Carga archivos estáticos -->
+
+{% block title %}Categorías | Lili Fashion{% endblock title %}
+
+{% block main-content %}
+    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light">
+        {% if categoria_vacia %}
+            <div class="text-center">
+                <h2 class="text-dark fw-bold mb-3" style="font-size: 2.5rem;">
+                    Esta categoría no contiene productos.
+                </h2>
+                <p class="text-secondary" style="font-size: 1.2rem;">
+                    Por favor, explore otras categorías en nuestro sitio.
+                </p>
+            </div>
+        {% else %}
+            <div class="container my-5">
+                <div class="row">
+                    <!-- Barra lateral de categorías -->
+                    <div class="col-sm-3">
+                        <div class="list-group">
+                            {% for val in titulo_producto %}
+                                <a href="{% url 'category-title' val.titulo_producto %}" class="btn btn-custom-primary-2" aria-current="true">
+                                    {{ val.titulo_producto }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Contenido principal de productos -->
+                    <div class="col-sm-9">
+                        <div class="row">
+                            {% for prod in product %}
+                                <div class="col text-center mb-4">
+                                    <a href="{% url 'product-detail' prod.id %}" class="btn">
+                                        <div>
+                                            <img src="{{ prod.imagen_producto.url }}" class="img-fluid" width="330px" height="230px">
+                                            <div class="fw-bold">{{ prod.titulo_producto }}</div>
+                                            <div class="fw-bold text-danger">
+                                                Rs.{{ prod.precio_con_descuento }}/-
+                                                <small class="fw-light text-decoration-line-through">
+                                                    {{ prod.precio_venta }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main-content %}

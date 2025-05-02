@@ -1,0 +1,362 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home Page | Lili Fashion{% endblock title %}
+
+{% block information %}
+    <!-- Sección de presentación de la tienda -->
+    <div class="my-container">
+        <div class="presentacion">
+              <h1>Astral Shop</h1>
+              <small>
+                Bienvenido a Astral Shop (VERSIÓN BETA), tu destino único para descubrir una amplia gama de estilo, elegancia y practicidad. Sumérgete en un mundo de opciones, desde moda femenina y masculina hasta productos importados para el hogar, todo cuidadosamente seleccionado para satisfacer tus gustos y necesidades.
+              </small>
+        </div>
+    </div>
+    <br>
+{% endblock information %}
+
+{% block banner_slider %}
+    <!-- Carrusel o slider de imágenes en la página principal -->
+    <div id="carrusel-inicio" class="carrusel-inicio">
+        <div class="diapositivas">
+            <!-- Cada diapositiva contiene una imagen del banner -->
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo1.jpg'%}" alt="banner1">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo2.jpg'%}" alt="banner2">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo3.jpg'%}" alt="banner3">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo4.jpg'%}" alt="banner4">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo5.jpg'%}" alt="banner5">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo6.jpg'%}" alt="banner6">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo7.jpg'%}" alt="banner7">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo8.jpg'%}" alt="banner8">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo9.jpg'%}" alt="banner9">
+            </div>
+            <div class="diapositiva">
+                <img src="{% static 'assets/images/banner/fondo10.jpg'%}" alt="banner10">
+            </div>
+        </div>
+    </div>
+{% endblock banner_slider %}
+
+{% block main-content %}
+    <!-- Contenedor principal para las categorías de productos -->
+    <div class="custom-container">
+        <br>
+        <!-- Título de la sección de categorías -->
+        <h2>CATEGORÍAS DE PRODUCTOS</h2>
+        <hr>
+        <br>
+
+        <!-- Fila de categorías de productos -->
+        <div class="custom-row">
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de ropa para dama -->
+                    <a href="{% url 'category' 'RD' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/ropaCasual.jpg' %}" alt="">
+                            <p class="mlkpro">Ropa para Dama</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de maquillaje -->
+                    <a href="{% url 'category' 'ME' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/maquillaje.jpg' %}" alt="">
+                            <p class="mlkpro">Maquillaje</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de calzado para dama -->
+                    <a href="{% url 'category' 'CD' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/calzado.jpg' %}" alt="">
+                            <p class="mlkpro">Calzado Dama</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila de otras categorías -->
+        <div class="custom-row">
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de perfumes para dama -->
+                    <a href="{% url 'category' 'PD' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/perfumes.jpg' %}" alt="">
+                            <p class="mlkpro">Perfumería Dama</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de accesorios para dama -->
+                    <a href="{% url 'category' 'AD' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/accesorios.jpg' %}" alt="">
+                            <p class="mlkpro">Accesorios Dama</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de productos para el hogar -->
+                    <a href="{% url 'category' 'PH' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/productosHogar.jpeg' %}" alt="">
+                            <p class="mlkpro">Productos para el hogar</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila de más categorías -->
+        <div class="custom-row">
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de bolsos -->
+                    <a href="{% url 'category' 'BS' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/bolsos.jpg' %}" alt="">
+                            <p class="mlkpro">Bolsos</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de electrodomésticos y herramientas -->
+                    <a href="{% url 'category' 'ES' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/electrodomesticos.jpg' %}" alt="">
+                            <p class="mlkpro">Electrodomésticos y Herramientas</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="custom-col">
+                <div class="custom-category">
+                    <!-- Enlace a la categoría de juguetería -->
+                    <a href="{% url 'category' 'JA' %}">
+                        <div class="custom-category-content text-center">
+                            <img src="{% static 'assets/images/product/jugeteria.jpg' %}" alt="">
+                            <p class="mlkpro">Juguetería</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-row">
+    <!-- Categoría Arte -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'AE' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/arte.jpg' %}" alt="">
+                    <p class="mlkpro">Arte</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br>
+    
+    <!-- Categoría Productos de Aplicación Corporal -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'PL' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/productosCorporales.jpg' %}" alt="">
+                    <p class="mlkpro">Productos de aplicación corporal</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br>
+
+    <!-- Categoría Novedades y Promociones -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'NP' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/novedades.jpg' %}" alt="">
+                    <p class="mlkpro">Novedades y promociones</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="custom-row">
+    <!-- Categoría Chaquetas -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'CS' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/chaquetas.jpg' %}" alt="">
+                    <p class="mlkpro">Chaquetas</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Categoría Calzado para Caballero -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'CC' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/calzadohombre.jpg' %}" alt="">
+                    <p class="mlkpro">Calzado para Caballero</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Categoría Accesorios para Caballero -->
+    <div class="custom-col">
+        <div class="custom-category">
+            <a href="{% url 'category' 'AC' %}">
+                <div class="custom-category-content text-center">
+                    <img src="{% static 'assets/images/product/accesorioshombre.jpg' %}" alt="">
+                    <p class="mlkpro">Accesorios para caballero</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+</div>  
+{% endblock main-content %}
+
+{% block new_arrivals %}
+<div class="new-arrivals-container">
+    <h2>Productos Recién Agregados</h2>
+    <hr class="custom-hr">
+    <div id="new-arrivals-carousel" class="new-arrivals-carousel">
+        <!-- Ciclo para mostrar productos recientes -->
+        {% for producto in productos_recientes %}
+        <div class="new-arrival">
+            <a href="{% url 'product-detail' pk=producto.id %}">
+                <div class="new-arrival-img-container">
+                    {% if producto.imagen_producto %}
+                        <img src="{{ producto.imagen_producto.url }}" alt="Imagen del producto">
+                    {% else %}
+                        <img src="{% static 'assets/images/product/new-default-image.jpg' %}" alt="Imagen por defecto">
+                    {% endif %}
+
+                </div>
+                <p class="new-arrival-text">{{ producto.titulo_producto }} - ${{ producto.precio_venta }}</p>
+                <hr class="custom-hr">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock new_arrivals %}
+
+{% block comments %}
+<div class="comments-container">
+    <h2>Mensajes de clientes satisfechos</h2>
+    <hr class="custom-hr">
+    <!-- Estrellas de valoración -->
+    <div class="star-rating">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span> 
+    </div>
+
+    <!-- Carrusel de comentarios -->
+    <div id="comment-carousel" class="comment-carousel">
+        {% for felicitacion in felicitaciones %}
+        <div class="comment">
+            <p class="comment-text">{{ felicitacion.descripcion }}</p>
+            <p class="comment-author">- {{ felicitacion.nombre }} {{ felicitacion.apellidos }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Flechas para navegar entre comentarios -->
+    <div class="carousel-arrows">
+        <span class="prev" onclick="changeComment(-1)">&#10094;</span>
+        <span class="next" onclick="changeComment(1)">&#10095;</span>
+    </div>
+</div>
+
+<script>
+    let currentComment = 0;
+
+    // Función para mostrar el comentario actual
+    function showComment(index) {
+        const comments = document.querySelectorAll('.comment');
+        comments.forEach(comment => comment.style.display = 'none');
+
+        // Cambia de comentario si el índice es mayor o menor que el número de comentarios
+        if (index < 0) {
+            currentComment = comments.length - 1;
+        } else if (index >= comments.length) {
+            currentComment = 0;
+        } else {
+            currentComment = index;
+        }
+
+        // Muestra el comentario seleccionado
+        comments[currentComment].style.display = 'block';
+    }
+
+    // Función para cambiar el comentario
+    function changeComment(indexChange) {
+        showComment(currentComment + indexChange);
+    }
+
+    // Inicializa el primer comentario visible
+    showComment(currentComment);
+</script>
+
+{% endblock comments %}
+
+
+
+
+
+
+
+
+
+
+
+

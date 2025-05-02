@@ -1,0 +1,149 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Checkout | Lili Fashion{% endblock title %}
+
+{% block main-content %}
+<div class="container">
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <h4>Información de pago</h4>
+            <hr>
+
+            {% for item in cart_items %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h5>Producto: {{ item.product.titulo_producto }}</h5>
+                    <p>Cantidad: {{ item.cantidad }}</p>
+                    <p class="fw-bold">Precio: {{ item.product.precio_con_descuento }}</p>
+                </div>
+            </div>
+            {% endfor%}
+
+            <p class="fw-bold">Suma total:+ $2 (envío) = {{totalamount}}</p>
+
+            <small>**Términos y Condiciones de Compra**<br>
+                1. **Pago y Precios:**<br>
+                - Todos los precios están en la moneda local y se mostrarán durante el proceso de pago.<br>
+                - Los pagos son procesados de manera segura a través de nuestro proveedor de pagos.<br>
+
+             2. **Envío:**<br>
+                - El tiempo estimado de envío se proporcionará durante el proceso de compra.<br>
+                - Los costos de envío variarán según la ubicación y la opción de envío seleccionada.<br>
+
+             3. **Devoluciones y Reembolsos:**<br>
+                - Aceptamos devoluciones dentro de los 30 días posteriores a la recepción del producto.<br>
+                - Los productos deben devolverse en su estado original para ser elegibles para un reembolso.<br>
+            </small>
+        </div>
+
+        <div class="col-sm-4 offset-sm-1">
+            <h4>Selecciona dirección de envío</h4>
+            <hr>
+            <form method="post" id="myform">
+                {% csrf_token %}
+                
+                {% for ad in add %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5>{{ad.nombre}}</h5>
+                        <p>Celular : {{ad.telefono}}</p>
+                        <p>{{ad.direccion}} {{ad.ciudad}} {{ad.departamento}} {{ad.identificacion}}</p>
+                    </div>
+                </div>
+                <div class="form-check mt-2 mb-5">
+                    <input type="radio" class="form-check-input address-radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}">
+                    <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+                        Dirección:{{forloop.counter}}
+                    </label>
+                </div>
+                {% endfor %}
+
+                <!-- Razorpay -->
+                <div id="rzp-button1-container" class="text-center">
+                    <button id="rzp-button1" type="submit" class="btn px-5">
+                        <img src="{% static 'assets/images/icons/razorpay.svg' %}" alt="Razorpay Icon" class="razorpay-icon">  
+                    </button>
+                </div> 
+            </form>
+
+            <!-- PayPal -->
+            <div id="paypal-container">
+                <img src="{% static 'assets/images/icons/paypal.svg' %}" alt="PayPal">
+                <div id="paypal-form-container">
+                    {{ paypal_form.render }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
+
+
+{% block payment-gateway %}
+<script>
+    // ⚠️ VALIDACIÓN: revisar si se seleccionó una dirección
+    function isAddressSelected() {
+        const radios = document.querySelectorAll('input[name="custid"]');
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // ⚠️ Razorpay configuración
+    var options = {
+        "key": "rzp_test_V3NdXPh72wKeN8",
+        "amount": "{{razoramount}}",
+        "currency": "INR",
+        "name": "Tienda",
+        "descripcion": "Comprar productos",
+        "order_id": "{{order_id}}",
+        "handler": function (response){
+            var form = document.getElementById("myform");
+            window.location.href = `http://localhost:8000/paymentdone?order_id=${response.razorpay_order_id}&payment_id=${response.razorpay_payment_id}&cust_id=${form.elements["custid"].value}`
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+        alert(response.error.descripcion);
+    });
+
+    // ⚠️ BOTÓN RAZORPAY
+    document.getElementById('rzp-button1').onclick = function(e){
+        if (!isAddressSelected()) {
+            alert("Por favor selecciona una dirección de envío antes de continuar con el pago.");
+            e.preventDefault(); // ❌ No abrir Razorpay si no hay dirección
+            return;
+        }
+        rzp1.open();
+        e.preventDefault();
+    };
+
+    // ⚠️ BLOQUEO PARA PAYPAL si no hay dirección
+    document.addEventListener('DOMContentLoaded', function () {
+        const paypalForm = document.querySelector('#paypal-container form');
+        if (paypalForm) {
+            paypalForm.addEventListener('submit', function(e) {
+                if (!isAddressSelected()) {
+                    alert("Por favor selecciona una dirección de envío antes de pagar con PayPal.");
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+</script>
+{% endblock payment-gateway %}

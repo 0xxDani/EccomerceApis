@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Registro de clientes | Lili Fashion{% endblock title %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row my-3">
+        <!-- Carga del script para funcionalidad adicional (bundle.js) -->
+        <script src="{% static 'src/bundle.js' %}"></script>
+        
+        <div class="col-sm-6 offset-sm-3" id="registration">
+            <br><br>
+            <!-- Título de la página de registro -->
+            <h3>Registrate en Astral Shop</h3>
+            <hr>
+            <br>
+            
+            {% comment %} 
+            SI SE QUIERE LOGIN BLANCO SOLO SE QUITA LA CLASE id="shadow-1" y listo 
+            {% endcomment %}
+            
+            <!-- Formulario de registro -->
+            <form action="" method="post" novalidate class="shadow p-5" id="shadow-1">
+                <!-- Token CSRF para protección contra ataques -->
+                {% csrf_token %}
+                
+                <!-- Itera sobre cada campo del formulario y lo muestra con sus etiquetas y errores -->
+                {% for fm in form %}
+                    {{ fm.label_tag }} {{ fm }} 
+                    <small class="text-danger">{{ fm.errors|striptags }}</small> <br>
+                {% endfor %}
+                
+                <!-- Botón para enviar el formulario -->
+                <input type="submit" value="Registrarse" class="btn btn-primary"> <br>
+
+                <!-- Enlace para redirigir a los usuarios existentes al inicio de sesión -->
+                <div class="text-center text-primary fw-bold">
+                    <br><br>
+                    <small id="texto-login-abajo">Usuario Existente? 
+                        <a href="{% url 'login' %}" class="text-danger">Inicia sesión aquí</a>
+                    </small>
+                </div>
+                
+                <!-- Muestra errores no específicos del formulario (errores generales) -->
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="alert alert-danger my-3">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+                
+                <!-- Muestra mensajes generados por el sistema (si los hay) -->
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="alert alert-{{ msg.tags }}" role="alert">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

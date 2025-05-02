@@ -1,0 +1,43 @@
+//ESTILOS PARA EL RECUADRO FUSCIA DE PRESENTACIÓN EN LA PÁGINA DE INICIO
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.my-container {
+    max-width: 85%;
+    max-height: 210px;
+    margin: 20px auto 10px;            
+    padding: 10px;
+    border-radius: 15px;
+    background-image: url("/static/assets/images/universo2.jpg");
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+.presentacion {
+    text-align: center;
+    color: var(--color-white);
+    font-size: var(--font-size-2);
+}
+.presentacion h1 {
+    font-family: var(--font-family-82);
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: var(--font-size-title);
+    color: var(--color-azul-3);
+}
+.presentacion small {
+    font-family: var(--font-family-83);
+    letter-spacing: 1px;
+    line-height: 1.7;
+    margin-top: -35px;
+    letter-spacing: 1px;
+    line-height: 1.7;
+}
+@media screen and (max-width: 767px) {
+    .my-container {
+        max-height: 800px;
+    }
+    .presentacion small {
+        height: 300px;  
+        overflow: hidden;                  
+    }
+}

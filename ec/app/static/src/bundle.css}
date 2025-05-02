@@ -1,0 +1,114 @@
+@charset "UTF-8";
+:root {
+  --primary-color: hsl(214, 84%, 56%);
+  --text-color: hsl(0, 0%, 31%);
+  --bg-color: hsl(249, 30%, 57%);
+  --bg-card-color: hsl(0, 0%, 98%);
+  --border-radius: 0.4em;
+  --transition: color 0.1s, background-color 0.2s ease-in-out;
+  --skills-bar-length: 0%;
+}
+
+.my-container {
+  max-width: 1050px;
+  margin: 26px auto 20px; /* Centrar el contenido en el contenedor */
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f5e1e1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.presentacion {
+  text-align: center;
+}
+
+.presentacion h1 {
+  font-family: "Handlee", cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.presentacion small {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.carrusel-inicio {
+  width: 73%;
+  margin: 0 auto 45px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.diapositivas {
+  display: flex;
+  width: 400%;
+  transition: transform 0.5s ease-in-out;
+  height: 330px;
+}
+
+.diapositiva {
+  flex: 0 0 25%; /* Cada diapositiva ocupa el 25% del ancho total */
+  box-sizing: border-box;
+}
+
+.diapositiva img {
+  width: 100%;
+  height: auto; /* Esto permite que la altura se ajuste automáticamente según el ancho */
+  object-fit: cover;
+}
+
+.diapositiva-activa {
+  transform: translateX(0);
+}
+
+.navbar-nav .nav-link.dropdown-toggle {
+  color: rgba(79, 23, 119, 0.863);
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.navbar-nav .nav-link.active {
+  color: rgba(79, 23, 119, 0.863);
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.switches {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.toggle-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.toggle-theme__icon {
+  margin-right: 0.5em;
+  width: 20px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  transition: var(--transition);
+}
+
+body.dark {
+  --text-color: hsl(0, 0%, 83%);
+  --bg-color: hsl(65, 40%, 84%);
+}
+
+/*# sourceMappingURL=bundle.css%7D.map */

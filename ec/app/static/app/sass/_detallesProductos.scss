@@ -1,0 +1,56 @@
+/* Estilos base */
+.product-details-2 {
+    background-color: #ddd1d1;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    color: var(--color-negro);
+    font-family: var(--font-family-5);
+}
+.descripcion-producto {
+    font-size: 28px;
+    color: #181616;
+    font-family: var(--font-family-5);
+}
+.precio-sin-descuento {
+    font-size: 18px;
+    color: #0e0b0b;
+}
+.caracteristicas-producto {
+    font-size: 22px;
+    color: #080707;
+    font-family: var(--font-family-1);
+}
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.product-actions a{
+    margin-left: 10px;
+}
+.product-actions a i.fa-heart {
+    font-size: .3em;
+}
+.product-actions form{
+    margin-top: 10px;
+}
+.img-fluid {
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-height: 425px;
+}
+@media (max-width: 767px) {
+    .product-details-2 {
+        padding: 15px;
+    }
+    .product-actions {
+        flex-direction: column;
+        align-items: stretch; 
+    }
+    .product-actions form,
+    .product-actions a,
+    .product-actions button {
+        margin-top: 10px;
+    }
+}

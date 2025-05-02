@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %} <!-- Extiende la plantilla base para reutilizar la estructura global de la página -->
+{% load static %} <!-- Carga archivos estáticos como CSS, imágenes o scripts necesarios para la página -->
+
+{% block title %}Actualizar información | Lili Fashion{% endblock title %} <!-- Establece el título de la página -->
+
+{% block main-content %}
+<!-- Contenido principal de la página -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Saludo al usuario -->
+        <h3>Hola!, <span class="text-capitalize">{{request.user}}</span></h3>
+    </div>
+    <div class="colsm-8 offset-sm-1">
+        <!-- Formulario para actualizar la información del usuario -->
+        <form action="" method="post">
+            {% csrf_token %} <!-- Token de seguridad para proteger el formulario contra ataques CSRF -->
+            
+            <!-- Itera sobre el formulario y muestra los campos con sus etiquetas y errores -->
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
+            {% endfor %}
+            
+            <div class="col-12 mt-3">
+                <!-- Botón para enviar el formulario y actualizar la información -->
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                
+                <!-- Enlace para regresar a la página de direcciones -->
+                <a href="{% url 'address' %}" type="button" class="btn btn-danger">Regresar</a>
+            </div>
+            
+            <!-- Muestra errores no relacionados con un campo específico -->
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger my-3">{{error}}</p>
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock main-content %}

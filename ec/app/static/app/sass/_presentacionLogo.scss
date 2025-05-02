@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.my-container-logo {  
+    max-width: 15%; 
+    padding: 4px 0px 0px 4px;
+    border-radius: 4px;
+    margin-top: 13px;
+    margin-bottom: -15px;
+    margin-left: 1060px;
+    background-image: url("/static/assets/images/universo.jpg");
+}
+.presentacion-logo {
+    text-align: center;
+    color: var(--color-white);
+    font-size: 1.1em;
+}
+.presentacion-logo h1 {
+    font-family: var(--font-family-1);
+    margin-bottom: 5px;
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: var(--font-size);
+    color: var(--color-white);
+}
+@media screen and (max-width: 1067px) {
+    .my-container-logo {
+        max-width: 70%; 
+        margin-left: auto;
+        margin-top: 10px; 
+        margin-right: 35px;
+        margin-bottom: -50px;
+    }
+}
+

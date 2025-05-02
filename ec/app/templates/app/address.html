@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}  <!-- Extiende la plantilla base 'base.html' para reutilizar la estructura común de la página -->
+
+{% load static %}  <!-- Carga los archivos estáticos de Django, permitiendo utilizar imágenes, CSS, JS, etc. -->
+
+{% block title %}Perfil | Lili Fashion{% endblock title %}  <!-- Define el título de la página que aparece en la barra del navegador como "Perfil | Lili Fashion" -->
+
+{% block main-content %}  <!-- Define el bloque donde se inserta el contenido principal de la página -->
+
+    <div class="my-container-logo">  <!-- Contenedor para mostrar el logo o el título de la tienda -->
+        <div class="presentacion-logo">  <!-- Sección de presentación del logo o título -->
+            <h1>Astral Shop</h1>  <!-- Nombre de la tienda que se muestra en la página -->
+        </div>
+    </div>
+
+    <div class="profile-container my-5">  <!-- Contenedor principal para la información del perfil con un margen superior (my-5) -->
+        <div class="row">  <!-- Utiliza una fila de Bootstrap para organizar los elementos en columnas -->
+            <div class="col-sm-2 border-end">  <!-- Columna pequeña de 2 unidades con un borde en el lado derecho (border-end) -->
+                <ul class="list-unstyled">  <!-- Lista sin estilo, para navegación -->
+                    <!-- Enlaces para actualizar perfil y ver datos de perfil -->
+                    <li class="d-grid"><a href="{% url 'profile' %}" class="btn btn-custom-primary">Actualizar Perfil</a></li>
+                    <li class="d-grid"><a href="{% url 'address' %}" class="btn btn-custom-secondary">Ver tus datos de perfil</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-8 offset-sm-1">  <!-- Columna más ancha para mostrar la información del perfil -->
+                <br><br>  <!-- Espaciado adicional para separación -->
+                <!-- Mensaje personalizado que saluda al usuario con su nombre -->
+                <h4><span style="text-transform: uppercase;">{{request.user}}, </span>aquí puedes ver tus datos de perfil y tus diferentes direcciones de envío!</h4>
+                
+                <div class="col-sm-9 offset-sm-1">  <!-- Contenedor para mostrar las direcciones de envío -->
+                    <div class="row">  <!-- Fila para organizar las direcciones de envío en columnas -->
+                        {% for ad in add %}  <!-- Bucle de Django para iterar sobre las direcciones almacenadas en 'add' -->
+                        <div class="col-sm-6">  <!-- Columna para cada dirección -->
+                            <div class="card m-3">  <!-- Tarjeta de Bootstrap para mostrar los detalles de la dirección -->
+                                <div class="card-body">  <!-- Cuerpo de la tarjeta -->
+                                    <h3>Dirección {{forloop.counter}}</h3>  <!-- Muestra el número de la dirección con un contador del bucle -->
+                                    <!-- Detalles de la dirección -->
+                                    <p>Nombre: {{ad.nombre}}</p>  <!-- Nombre asociado con la dirección -->
+                                    <p>Dirección: {{ad.direccion}}</p>  <!-- Dirección física -->
+                                    <p>Teléfono: {{ad.telefono}}</p>  <!-- Teléfono de contacto -->
+                                    <p>Departamento: {{ad.departamento}}</p>  <!-- Departamento asociado con la dirección -->
+                                    <p>Ciudad: {{ad.ciudad}}</p>  <!-- Ciudad asociada con la dirección -->
+                                    <p>Identificacion: {{ad.identificacion}}</p>  <!-- Identificación de la dirección -->
+                                    <!-- Enlace para actualizar la dirección, usando el ID de la dirección -->
+                                    <p class="text-center"><a href="{% url 'updateAddress' pk=ad.id %}" type="button" class="btn btn-success">Actualizar</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}  <!-- Fin del bucle que recorre las direcciones -->
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}  <!-- Fin del bloque de contenido principal -->
